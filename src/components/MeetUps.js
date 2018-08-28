@@ -1,9 +1,18 @@
 import React from 'react';
+import MeetUpKey from '../keys';
 
 const MeetUps = () => {
-  const MeetUpURL = 'https://api.meetup.com1/find/groups2?zip=11211&radius=1&category=253&order=members4'
+  const CORSWrapper = 'https://cors-anywhere.herokuapp.com/'
+  const MeetUpURL = `${CORSWrapper}https://api.meetup.com/2/events?key=${MeetUpKey}&group_urlname=ny-tech&sign=true`
 
-  fetch('https://api.meetup.com1/find/groups2?zip=11211&radius=1&category=253&order=members4').then(resp => resp.json()).then(console.log)
+  fetch(MeetUpURL, {
+    mode: 'cors'
+  })
+  .then(resp => resp.json())
+  .then(json => {
+    console.log(json)
+  })
+
   return (
     <div>
       meetups
