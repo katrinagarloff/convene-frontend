@@ -1,6 +1,7 @@
 const BASE_URL = 'http://localhost:3000'
 
 export function makeQuery(term) {
+  return (dispatch) => {
   return fetch(BASE_URL + '/queries',
     {
       method: 'POST',
@@ -11,5 +12,16 @@ export function makeQuery(term) {
     }
   )
   .then(resp => resp.json())
-  .then(console.log)
+  .then(json => {
+    dispatch({
+      type: 'SET_MEETUPS',
+      meetUps: json.response
+    })
+      console.log
+  })
+  }
+}
+
+function normalizeData(meetUp){
+
 }
