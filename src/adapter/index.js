@@ -15,9 +15,10 @@ export function makeQuery(term) {
   .then(json => {
     dispatch({
       type: 'SET_MEETUPS',
-      meetUps: json.response
+      meetUps: json.response,
+      searchPoint: {lat: term.lat, lon: term.lon}
     })
-      console.log
+    
   })
   }
 }

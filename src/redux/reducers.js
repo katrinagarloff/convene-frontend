@@ -1,5 +1,5 @@
 const defaultState = {
-  user: {
+  searchPoint: {
     lat: 40.700518,
     lon: -73.929678
     },
@@ -12,15 +12,22 @@ export const reducer = (state = defaultState, action) => {
     case 'SET_MEETUPS':
       return {
         ...state,
-        meetUps: [ ...action.meetUps ]
+        meetUps: [ ...action.meetUps ],
+        searchPoint: { ...action.searchPoint}
       }
       break;
-      case 'SET_ACTIVE_KEY':
+      case 'SET_SEARCH_POINT':
       console.log(action.payload)
       return {
         ...state,
-      activeKey: action.payload
+      searchPoint: { ...action.payload }
     }
+      break;
+      case 'SET_ACTIVE_KEY':
+      return {
+        ...state,
+        activeKey: action.payload
+      }
       break;
     default:
     return state

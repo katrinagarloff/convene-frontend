@@ -3,8 +3,10 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import { makeQuery } from '../adapter/index'
+import { connect } from 'react-redux'
 
-export default class LocationSearchInput extends React.Component {
+class AutoComplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: '' };
@@ -17,7 +19,11 @@ export default class LocationSearchInput extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => {
+        console.log('Success', latLng)
+        this.props.makeQuery({lat: latLng.lat, lon: latLng.lng})
+        return 'hello'
+      })
       .catch(error => console.error('Error', error));
   };
 
@@ -30,12 +36,14 @@ export default class LocationSearchInput extends React.Component {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
+          <div className="meetup-box">
             <input id='places-input'
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input',
               })}
             />
+            </div>
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
@@ -64,3 +72,5 @@ export default class LocationSearchInput extends React.Component {
     );
   }
 }
+
+export default connect(null, { makeQuery })(AutoComplete)

@@ -19,7 +19,7 @@ class Markers extends Component {
       const { lat, lon } = meetUp.group
       // <iframe src={`${link}`} frameBorder="0" id={id}
       // ></iframe>
-      console.log(meetUp)
+      // console.log(meetUp)
       return (
 
         <Marker
@@ -52,12 +52,13 @@ class Markers extends Component {
 
   componentDidMount() {
     // this.props.handleMeetups(['1', '2'])
-    this.props.makeQuery({lat: 40.700518, lon: -73.929678})
+    // this.props.makeQuery({lat: 40.700518, lon: -73.929678})
 
   }
 
   render() {
     const { meetUps } = this.props
+    console.log(this.props)
     return(
       <div>
       {this.setMarkers(meetUps)}
@@ -67,8 +68,9 @@ class Markers extends Component {
 }
 
 const mapStateToProps = (state) => {
+
   return {
-    user: state.user,
+    searchPoint: state.searchPoint,
     meetUps: state.meetUps,
     activeKey: state.activeKey
   }
