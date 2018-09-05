@@ -17,6 +17,9 @@ class Markers extends Component {
     return meetUps.map(meetUp => {
       const { id, name, local_date, local_time, description, link} = meetUp
       const { lat, lon } = meetUp.group
+      // <iframe src={`${link}`} frameBorder="0" id={id}
+      // ></iframe>
+      console.log(meetUp)
       return (
 
         <Marker
@@ -26,10 +29,17 @@ class Markers extends Component {
         >
           {
             this.props.activeKey === id ?
-            <div className="hidden">
-              <InfoWindow key={id} className="hidden">
-                  <iframe src={`${link}`} frameBorder="0" id={id}
-                  className="hidden"></iframe>
+            <div className= "thumbnail">
+              <InfoWindow key={id} >
+                <div className="meetup green">
+                  {
+                    !meetUp.venue
+                    ? name
+                    : meetUp.venue.name
+                    ? <div> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
+                    : meetUp.venue.address_1
+                  }
+                </div>
               </InfoWindow>
               </div>
           : null

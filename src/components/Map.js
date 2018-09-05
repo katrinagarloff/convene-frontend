@@ -9,9 +9,9 @@ import Markers from './Markers'
 //`https://maps.googleapis.com/maps/api/js?key=${GoogleMapKey}&callback=initMap`
 const Map = compose(
   withProps({
-   googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${GoogleMapKey}&v=3.exp&libraries=geometry,drawing,places`,
+   googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${GoogleMapKey}&v=3.exp&libraries=geometry,drawing`,
    loadingElement: <div style={{ height: `100%`}} />,
-   containerElement: <div style={{ height: `600px`, width: '600px' }} />,
+   containerElement: <div style={{ height: `600px`, width: '100%' }} />,
    mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
@@ -32,6 +32,7 @@ const Map = compose(
     <GoogleMap
       defaultZoom={14}
       defaultCenter={{ lat: lat, lng: lon }}
+      className="map"
     >
       <Markers />
     </GoogleMap>
