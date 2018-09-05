@@ -24,6 +24,7 @@ export const reducer = (state = defaultState, action) => {
     }
       break;
       case 'SET_ACTIVE_KEY':
+      console.log(action.payload)
       return {
         ...state,
         activeKey: action.payload

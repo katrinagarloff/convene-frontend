@@ -16,16 +16,16 @@ class Markers extends Component {
   setMarkers = (meetUps) => {
     return meetUps.map(meetUp => {
       const { id, name, local_date, local_time, description, link} = meetUp
-      const { lat, lon } = meetUp.group
+      const { lat, lon } = meetUp.venue
+
       // <iframe src={`${link}`} frameBorder="0" id={id}
       // ></iframe>
-      // console.log(meetUp)
       return (
 
         <Marker
-        position={{lat: meetUp.group.lat, lng: meetUp.group.lon}}
-        key={id}
-        onMouseOver={() => this.props.setActiveKey(id)}
+          position={{lat: lat, lng: lon}}
+          key={id}
+          onMouseOver={() => this.props.setActiveKey(id)}
         >
           {
             this.props.activeKey === id ?
@@ -33,12 +33,17 @@ class Markers extends Component {
               <InfoWindow key={id} >
                 <div className="meetup green">
                   {
-                    !meetUp.venue
-                    ? name
-                    : meetUp.venue.name
-                    ? <div> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
-                    : meetUp.venue.address_1
-                  }
+                    meetUp.venue.name ?
+                    <div> {name} <br/> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
+                    : <div> {name} <br/> {meetUp.venue.address_1} </div>
+                    /*
+
+                    // !meetUp.venue
+                    // ? <div> {name} </div>
+                    // : meetUp.venue.name
+                    // ? <div> {name} <br/> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
+                    // : <div> {name} <br/> {meetUp.venue.address_1} </div>
+                */  }
                 </div>
               </InfoWindow>
               </div>
