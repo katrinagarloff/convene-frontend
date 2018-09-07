@@ -5,6 +5,8 @@ import { Marker, InfoWindow } from 'react-google-maps'
 import { makeQuery } from '../adapter/index'
 import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel"
 import { Link } from 'react-router-dom'
+// import { findDOMNode } from 'react-dom'
+// import $ from 'jquery'
 
 
 class Markers extends Component {
@@ -18,6 +20,8 @@ class Markers extends Component {
       const { id, name, local_date, local_time, description, link} = meetUp
       const { lat, lon } = meetUp.venue
 
+
+
       // <iframe src={`${link}`} frameBorder="0" id={id}
       // ></iframe>
       return (
@@ -29,24 +33,17 @@ class Markers extends Component {
         >
           {
             this.props.activeKey === id ?
-            <div className= "thumbnail">
+            <React.Fragment >
               <InfoWindow key={id} >
-                <div className="meetup green">
+                <div className="info-div">
                   {
                     meetUp.venue.name ?
-                    <div> {name} <br/> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
-                    : <div> {name} <br/> {meetUp.venue.address_1} </div>
-                    /*
-
-                    // !meetUp.venue
-                    // ? <div> {name} </div>
-                    // : meetUp.venue.name
-                    // ? <div> {name} <br/> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
-                    // : <div> {name} <br/> {meetUp.venue.address_1} </div>
-                */  }
+                    <div><p className="green"> {name} </p> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
+                    : <div><p className="green"> {name} </p> {meetUp.venue.address_1} </div>
+                   }
                 </div>
               </InfoWindow>
-              </div>
+              </React.Fragment>
           : null
         }
         </Marker>
@@ -56,6 +53,9 @@ class Markers extends Component {
     // labelAnchor={new google.maps.Point(0, 0)}
 
   componentDidMount() {
+
+
+
     // this.props.handleMeetups(['1', '2'])
     // this.props.makeQuery({lat: 40.700518, lon: -73.929678})
 

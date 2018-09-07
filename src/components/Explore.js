@@ -17,13 +17,23 @@ showAutoComplete = () => {
 
 render() {
   return (
-    <div className='flex-container'>
-      <AutoComplete />
-    <div id='map'>
-      <Map isMarkerShown={true}
-      />
+    <div className='row'>
+    <div id='map' className='column meetup-box'>
+    <div className='map-frame'>
+        <Map isMarkerShown={true}
+        />
+        </div>
+    </div>
+
+      <div className='column'>
+        <div>
+          <AutoComplete />
+        </div>
+
+        <div>
+          <MeetUps />
+        </div>
       </div>
-      <MeetUps />
     </div>
     )
   }

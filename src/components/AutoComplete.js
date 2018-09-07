@@ -44,7 +44,7 @@ class AutoComplete extends React.Component {
               })}
             />
             </div>
-            <div className="autocomplete-dropdown-container">
+            <div className="autocomplete-dropdown-container" id="suggestions">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -52,16 +52,19 @@ class AutoComplete extends React.Component {
                   : 'suggestion-item';
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  ? { backgroundColor: '#FFCCDC', cursor: 'pointer' }
+                  : { backgroundColor: '#FFDDE8', cursor: 'pointer' };
                 return (
-                  <div
+                  <div id="suggestion-dropdown"
                     {...getSuggestionItemProps(suggestion, {
                       className,
                       style,
                     })}
                   >
+
                     <span>{suggestion.description}</span>
+                    <br/>
+                    . . .
                   </div>
                 );
               })}

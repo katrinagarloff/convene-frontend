@@ -27,6 +27,7 @@ const Map = compose(
 
 
   return (
+
     <GoogleMap
       defaultZoom={14}
       defaultCenter={{ lat: lat, lng: lon }}

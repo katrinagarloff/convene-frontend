@@ -5,11 +5,15 @@ import { setActiveKey } from '../redux/actions'
 const MeetUp = (props) => {
 
   return (
-    <div className="meetup-border">
-    <div className="meetup pink" onClick={(e) => props.setActiveKey(props.id)}>
-    {props.name}
-    </div>
-    </div>
+
+    <div className="meetup-border " onMouseOver={() => props.setActiveKey(props.id)}>
+
+        <div className="meetup pink">
+          {props.name}
+        </div>
+
+  </div>
+
   )
 }
 
