@@ -232,14 +232,41 @@ position: absolute;
 
 .map-container {
   float: left;
-  /* width: 25%; */
-  /* background-color: #092180;
-  border-style: solid;
-  border-width: 5px;
-  border-radius: 10px;
-  padding: 10px; */
 }
 
+.styled-select {
+   /* background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px; */
+   overflow: hidden;
+   width: 240px;
+   background-color: #FFCCDC;
+   border-radius: 5px;
+   border-style: outset;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+#dropdown {
+  border-style: inset;
+  border-width: 5px;
+  size: 35;
+  height: 45px;
+  width: 100%;
+  font-size: 100%;
+  background-color: #FFA3C0;
+  border-right-color: #4759A0;
+  border-bottom-color: #4759A0;
+
+  border-left-color: #1D317F;
+  border-top-color: #1D317F;
+}
 
 #places-input {
   border-style: inset;

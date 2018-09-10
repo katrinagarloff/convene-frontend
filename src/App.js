@@ -4,6 +4,8 @@ import { Switch, Route} from 'react-router-dom';
 import Home from './components/Home';
 import Explore from './components/Explore';
 import MenuBar from './components/MenuBar';
+import Login from './components/Login';
+import SignUp from './components/SignUp'
 import { GoogleMapKey } from './keys'
 
 class App extends Component {
@@ -17,7 +19,10 @@ class App extends Component {
         <MenuBar />
         <Switch>
           <Route path='/explore' component={Explore} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={SignUp} />
           <Route path='/' component={Home} />
+
         </Switch>
       </div>
     );

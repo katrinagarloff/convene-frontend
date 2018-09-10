@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { handleMeetups, setActiveKey } from '../redux/actions'
 import { Marker, InfoWindow } from 'react-google-maps'
 import { makeQuery } from '../adapter/index'
-import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel"
-import { Link } from 'react-router-dom'
 // import { findDOMNode } from 'react-dom'
 // import $ from 'jquery'
 
@@ -63,7 +61,6 @@ class Markers extends Component {
 
   render() {
     const { meetUps } = this.props
-    console.log(this.props)
     return(
       <div>
       {this.setMarkers(meetUps)}

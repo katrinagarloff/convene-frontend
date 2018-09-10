@@ -23,6 +23,48 @@ export function makeQuery(term) {
   }
 }
 
-function normalizeData(meetUp){
 
+
+export function createUser(user) {
+  return (dispatch) => {
+
+  return fetch(BASE_URL + '/users',
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({user: user})
+    }
+  )
+  .then(resp => resp.json())
+  .then(json => {
+    if(json.id) {
+      return dispatch({
+        type: 'SET_USER',
+        payload: json
+      })
+    }
+  })
+  }
+}
+
+export function getUser(user) {
+
+}
+
+
+
+
+export function getLocations(userId){
+  return (dispatch) => {
+    return fetch(BASE_URL + `/users/${userId}/locations`)
+    .then(resp => resp.json())
+    .then(json => {
+      return dispatch({
+        type: 'GET_LOCATIONS',
+        payload: json
+      })
+    })
+  }
 }

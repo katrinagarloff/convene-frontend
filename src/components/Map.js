@@ -1,7 +1,6 @@
 import React from 'react';
 import { compose, withProps } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
-import { GoogleMapKey } from '../keys.js';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import { connect } from 'react-redux'
 import Markers from './Markers'
 
@@ -16,15 +15,6 @@ const Map = compose(
   withGoogleMap
 )((props) => {
   const { lat, lon } = props.searchPoint
-  console.log(props)
-
-  // componentDidMount() {
-
-    // makeQuery({lat: 40.700518, lon: -73.929678})
-  // }
-
-
-
 
   return (
 
