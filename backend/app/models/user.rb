@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :locations
-  validates :name, :username, presence: true
-  validates :username, uniqueness: true
+  validates :name, :user_name, presence: true
+  validates :user_name, uniqueness: true
   has_secure_password
-    # gem install bcrypt find_by username and then .validate(pw string)
+  # gem install bcrypt
 end

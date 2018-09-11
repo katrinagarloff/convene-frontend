@@ -5,11 +5,12 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = location.create(location_params)
+    @location = Location.create(location_params)
+    render json: @location
   end
 
   private
   def location_params
-    params.require(:location).permit(:name, :lon, :lat, :user_id)
+    params.require(:location).permit(:name, :address, :lon, :lat, :user_id)
   end
 end

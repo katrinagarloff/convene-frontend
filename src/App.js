@@ -19,7 +19,7 @@ class App extends Component {
         <MenuBar />
         <Switch>
           <Route path='/explore' component={Explore} />
-          <Route path='/login' component={Login} />
+          <Route path='/logout' component={Home} />
           <Route path='/signup' component={SignUp} />
           <Route path='/' component={Home} />
 

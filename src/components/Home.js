@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Login from './Login'
 
-const Home = () => {
+const Home = (props) => {
 
   return (
     <div>
-      <Link to={'./login'}>
+      {props.user.id ?
+        <div> Hello {props.user.name} </div>
+        :
+        <React.Fragment>
+        <Login />
+          or...
         <div>
-          Login
+        <Link to={'./signup'}>
+          <div>
+            Signup
+          </div>
+        </Link>
         </div>
-      </Link>
-
-      <Link to={'./signup'}>
-        <div>
-          Signup
-        </div>
-      </Link>
+        </React.Fragment>
+      }
     </div>
   )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { })(Home);

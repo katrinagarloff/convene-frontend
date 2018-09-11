@@ -1,17 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { setUser } from '../redux/actions'
 
-const MenuBar = () => {
+const MenuBar = (props) => {
   return (
 
   <div>
-    <Link to='/login' style={{float:'right', margin: '10px'}}>
-      login
-    </Link>
-    <Link to='/signup' style={{float:'right', margin: '10px'}}>
-      signup
-    </Link>
-    <div className='menu-bar row'>
+
+    {props.user.id ?
+        <Link to='/logout' style={{float:'right', margin: '10px'}} onClick={setUser({})}>
+        logout
+      </Link>
+      :
+        <React.Fragment>
+        <Link to='/' style={{float:'right', margin: '10px'}}>
+          login
+        </Link>
+        <Link to='/signup' style={{float:'right', margin: '10px'}}>
+          signup
+        </Link>
+        </React.Fragment>
+    }
+      <div className='menu-bar row'>
+
 
     <Link to='/'>
       <span className='nav-link column'>
@@ -29,4 +41,10 @@ const MenuBar = () => {
   )
 }
 
-export default MenuBar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { setUser })(MenuBar);

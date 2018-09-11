@@ -4,9 +4,12 @@ import Map from './Map';
 import LocationsDropDown from './LocationsDropDown'
 import AutoComplete from './AutoComplete'
 import { GoogleMapKey } from '../keys.js'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 class Explore extends Component {
+
 state = {mounted: false}
 
 updateMount = () => {
@@ -33,10 +36,16 @@ render() {
           <div className='column'>
             <AutoComplete />
           </div>
+
+          {this.props.user.id ?
           <div className='column'>
             <LocationsDropDown />
           </div>
-
+          :
+          <div className='column'>
+            <Link to='/'>Login</Link> to save locations and Meetups
+          </div>
+        }
         </div>
 
 
@@ -50,4 +59,10 @@ render() {
   }
 }
 
-export default Explore;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Explore);

@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { getUser } from '../adapter/index'
+import { connect } from 'react-redux'
 
-const Login = () => {
+class Login extends Component {
 
+  state = {
+    username: "",
+    password: ""
+  }
+
+  updateTextBox = (updatee, e) => {
+    this.setState({[updatee]: e.target.value})
+  }
+
+  clearTextBox = () => {
+    this.setState({
+      username: "",
+      password: ""
+    })
+  }
+
+render() {
+  const { username, password } = this.state
   return (
-    <div>
-      username
-      <input type="text"/>
-      password
-      <input type="text"/>
-      <button onClick={() => console.log("hello")}>login</button>
-    </div>
-  )
+      <div>
+        username
+        <input type="text" value={username} onChange={(e) => this.updateTextBox('username', e)}/>
+        password
+        <input type="password" value={password} onChange={(e) => this.updateTextBox('password', e)}/>
+        <button onClick={() => this.props.getUser({user_name: username, password: password})}>login</button>
+      </div>
+    )
+  }
 }
 
-export default Login;
+export default connect(null, { getUser })(Login);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { createUser } from '../adapter/index'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class SignUp extends Component{
 
@@ -15,6 +16,14 @@ class SignUp extends Component{
     this.setState({[updatee]: e.target.value})
   }
 
+  clearTextBox = () => {
+    this.setState({
+      name: "",
+      username: "",
+      password: "",
+      confirmedPassword: ""
+    })
+  }
   render() {
     const { name, username, password, confirmedPassword } = this.state
     return (
@@ -27,14 +36,27 @@ class SignUp extends Component{
           username
         <input type="text" value={username} onChange={(e) => this.updateTextBox('username', e)}/>
           password
-        <input type="text" value={password} onChange={(e) => this.updateTextBox('password', e)}/>
+        <input type="password" value={password} onChange={(e) => this.updateTextBox('password', e)}/>
           confirm password
-        <input type="text" value={confirmedPassword} onChange={(e) => this.updateTextBox('confirmedPassword', e)}/>
+        <input type="password" value={confirmedPassword} onChange={(e) => this.updateTextBox('confirmedPassword', e)}/>
 
-        <button onClick={() => this.props.createUser({name: name, user_name: username, password_digest: password})}>signup</button>
+        <Link to='/'>
+          <button onClick={() => {
+            if (this.state.password === this.state.confirmedPassword) {
+              this.props.createUser({name: name, user_name: username, password: password})
+              this.clearTextBox()
+            } else {
+              alert("password entries are not the same.")
+          }}
+          }>
+          signup
+          </button>
+        </Link>
       </div>
     )
   }
 }
+
+
 
 export default connect(null, { createUser }) (SignUp)

@@ -33,6 +33,7 @@ export const reducer = (state = defaultState, action) => {
       }
       break;
       case 'SET_USER':
+      console.log(action.payload)
       return {
         ...state,
         user: { ...action.payload }
