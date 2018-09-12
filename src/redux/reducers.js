@@ -36,7 +36,8 @@ export const reducer = (state = defaultState, action) => {
       console.log(action.payload)
       return {
         ...state,
-        user: { ...action.payload }
+        user: { ...action.payload.user },
+        locations: [ ...action.payload.locations ]
       }
       break;
       case 'GET_LOCATIONS':
@@ -44,6 +45,13 @@ export const reducer = (state = defaultState, action) => {
       return {
         ...state,
         locations: [ ...action.payload ]
+      }
+      break;
+      case 'ADD_LOCATION':
+      console.log(action.payload)
+      return {
+        ...state,
+        locations: [ ...state.locations, action.payload ]
       }
 
     default:

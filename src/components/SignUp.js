@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createUser } from '../adapter/index'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class SignUp extends Component{
 
@@ -9,7 +9,8 @@ class SignUp extends Component{
     name: "",
     username: "",
     password: "",
-    confirmedPassword: ""
+    confirmedPassword: "",
+    errors: null
   }
 
   updateTextBox = (updatee, e) => {
@@ -21,13 +22,15 @@ class SignUp extends Component{
       name: "",
       username: "",
       password: "",
-      confirmedPassword: ""
+      confirmedPassword: "",
+      errors: null
     })
   }
   render() {
-    const { name, username, password, confirmedPassword } = this.state
+    const { name, username, password, confirmedPassword, errors } = this.state
     return (
       <div>
+      {errors ? <h3>{errors}</h3> : null}
       <h1>
       SIGNUP
       </h1>
@@ -40,23 +43,38 @@ class SignUp extends Component{
           confirm password
         <input type="password" value={confirmedPassword} onChange={(e) => this.updateTextBox('confirmedPassword', e)}/>
 
-        <Link to='/'>
+
           <button onClick={() => {
-            if (this.state.password === this.state.confirmedPassword) {
-              this.props.createUser({name: name, user_name: username, password: password})
-              this.clearTextBox()
+            if (this.state.password !== this.state.confirmedPassword) {
+              this.setState({errors: "Password entries are not the same."})
             } else {
-              alert("password entries are not the same.")
+              this.props.createUser({name: name, user_name: username, password: password})
+                .then(json => {
+                  if (json.errors) {
+                    this.setState({errors: json.errors[0]})
+                  } else {
+                    this.clearTextBox()
+                    this.props.history.replace('/explore')
+                  }
+                })
+            }
           }}
-          }>
+          >
           signup
+
           </button>
-        </Link>
+
       </div>
     )
   }
+
 }
 
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 
-export default connect(null, { createUser }) (SignUp)
+export default withRouter(connect(mapStateToProps, { createUser }) (SignUp))

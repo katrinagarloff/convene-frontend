@@ -11,13 +11,90 @@ body {
   height: 400px;
 
 } */
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
 
+.meetup-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #9F222A;
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+
+  border-style: inset;
+  border-width: 5px;
+  border-right-color: #FB7D86;
+  border-bottom-color: #FB7D86;
+
+  border-left-color: #E3303C;
+  border-top-color: #E3303C;
+}
+
+.meetup-overlay:target {
+  overflow-y: scroll;
+  max-height: 200px;
+  margin: 10px;
+  padding: 10px;
+  /* padding-bottom: 50px; */
+  /* margin-top: -50px; */
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
 
 
 
 #suggestion-dropdown {
 position: absolute;
 }
+
 #suggestions {
   box-shadow: 3px 3px 3px black;
   position: absolute;

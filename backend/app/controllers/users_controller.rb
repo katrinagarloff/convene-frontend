@@ -4,8 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+    if @user.save
     render json: @user
+    else
+      render json: { errors: @user.errors.full_messages }
+    end
   end
 
   def index
@@ -16,10 +20,9 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(user_name: user_params[:user_name])
     if @user && @user.validate(user_params[:password])
-      render json: @user
+      render json: @user, include: [:locations]
     else
-      render json: @users = User.all
-      # "wrong username or password"
+      render json: {error: "wrong username or password"}
     end
   end
 

@@ -10,6 +10,7 @@ class AutoComplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      locationName: '',
       address: '',
       lat: null,
       lon: null
@@ -19,6 +20,10 @@ class AutoComplete extends React.Component {
   handleChange = address => {
     this.setState({ address });
   };
+
+  getLocationName = (name) => {
+    this.setState({ locationName: name})
+  }
 
   updateLonLat(lon, lat){
     this.setState({lon: lon, lat: lat})
@@ -38,9 +43,8 @@ class AutoComplete extends React.Component {
   };
 
   render() {
-    const { address, lat, lon} = this.state
-
-    console.log(this.state)
+    const { locationName, address, lat, lon } = this.state
+    const popupText = "Give your new location a name:"
     return (
       <React.Fragment>
         <PlacesAutocomplete
@@ -87,7 +91,27 @@ class AutoComplete extends React.Component {
           )}
         </PlacesAutocomplete>
           { this.props.user.id && this.state.lat ?
-            <button onClick={() => this.props.saveLocation({name: "home", address: address, lon: lon, lat: lat, user_id: this.props.user.id})}>Save location</button>
+            <div>
+              <a href="#popup1">
+              Save location
+              </a>
+              <div id="popup1" className="overlay">
+	<div className="popup">
+		<h2>{popupText}</h2>
+		<a className="close" href="#">&times;</a>
+		<div className="content">
+			<input type="text" placeholder="home" onChange={(e) => this.getLocationName(e.target.value)}></input>
+      <a href="#" onClick={() => this.props.saveLocation(
+        {name: locationName,
+        address: address,
+        lon: lon,
+        lat: lat,
+        user_id: this.props.user.id})
+      }>save</a>
+		</div>
+	</div>
+</div>
+            </div>
             :
             null
           }

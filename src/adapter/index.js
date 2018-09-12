@@ -39,6 +39,7 @@ export function createUser(user) {
   )
   .then(resp => resp.json())
   .then(json => {
+    // console.log(json)
     if(json.id) {
       return dispatch({
         type: 'SET_USER',
@@ -48,6 +49,8 @@ export function createUser(user) {
           username: json.user_name
         }
       })
+    } else {
+      return json
     }
   })
   }
@@ -69,15 +72,19 @@ export function getUser(user) {
   .then(json => {
     console.log(json)
     if(json.id) {
+      getLocations(json.id)
       return dispatch({
         type: 'SET_USER',
         payload:
-        {
-          id: json.id,
-          name: json.name,
-          username: json.user_name
-        }
-      })
+          {user:
+          {
+            id: json.id,
+            name: json.name,
+            username: json.user_name
+          },
+        locations: [ ...json.locations ]
+      }
+    })
     } else {
       alert("login failed")
     }
@@ -105,7 +112,7 @@ export function saveLocation(location) {
     .then(json => {
       console.log(json)
       return dispatch({
-        type: 'SET_LOCATIONS',
+        type: 'ADD_LOCATION',
         payload: json
       })
     })

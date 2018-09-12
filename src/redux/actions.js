@@ -6,7 +6,6 @@ export const handleMeetups = (meetUps) => {
 }
 
 export const setActiveKey = (key) => {
-  console.log(key)
   return {
     type: 'SET_ACTIVE_KEY',
     payload: key

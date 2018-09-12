@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getUser } from '../adapter/index'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -19,8 +20,15 @@ class Login extends Component {
       password: ""
     })
   }
+  //
+
+  handleLogin = () => {
+    this.props.history.replace('/explore')
+    this.props.getUser({user_name: this.state.username, password: this.state.password})
+  }
 
 render() {
+
   const { username, password } = this.state
   return (
       <div>
@@ -28,10 +36,10 @@ render() {
         <input type="text" value={username} onChange={(e) => this.updateTextBox('username', e)}/>
         password
         <input type="password" value={password} onChange={(e) => this.updateTextBox('password', e)}/>
-        <button onClick={() => this.props.getUser({user_name: username, password: password})}>login</button>
+        <button onClick={this.handleLogin}>login</button>
       </div>
     )
   }
 }
 
-export default connect(null, { getUser })(Login);
+export default withRouter(connect(null, { getUser })(Login));
