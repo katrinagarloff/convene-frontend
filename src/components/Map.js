@@ -19,7 +19,7 @@ const Map = compose(
     <GoogleMap
       defaultZoom={14}
       defaultCenter={{ lat: lat, lng: lon }}
-      center={{lat: lat, lng: lon}}
+      center={{lat: parseFloat(lat, 10), lng: parseFloat(lon, 10)}}
       className="map"
     >
       <Markers />

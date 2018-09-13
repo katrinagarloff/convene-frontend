@@ -46,7 +46,7 @@ class AutoComplete extends React.Component {
     const { locationName, address, lat, lon } = this.state
     const popupText = "Give your new location a name:"
     return (
-      <React.Fragment>
+      <Fragment>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -92,8 +92,8 @@ class AutoComplete extends React.Component {
         </PlacesAutocomplete>
           { this.props.user.id && this.state.lat ?
             <div>
-              <a href="#popup1">
-              Save location
+              <a href="#popup1" className='cute-link' style={{float:'right', margin: '10px'}}>
+              save location
               </a>
               <div id="popup1" className="overlay">
 	<div className="popup">
@@ -115,7 +115,7 @@ class AutoComplete extends React.Component {
             :
             null
           }
-      </React.Fragment>
+      </Fragment>
 
     );
   }

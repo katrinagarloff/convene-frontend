@@ -31,7 +31,7 @@ render() {
 
   const { username, password } = this.state
   return (
-      <div>
+      <div style={{margin: '10px'}}>
         username
         <input type="text" value={username} onChange={(e) => this.updateTextBox('username', e)}/>
         password

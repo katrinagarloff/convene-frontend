@@ -9,31 +9,36 @@ const MenuBar = (props) => {
   <div>
 
     {props.user.id ?
-        <Link to='/logout' style={{float:'right', margin: '10px'}} onClick={setUser({})}>
+        <Link to='/logout' className='cute-link' style={{float:'right', margin: '10px'}} onClick={setUser({})}>
         logout
       </Link>
       :
-        <React.Fragment>
-        <Link to='/' style={{float:'right', margin: '10px'}}>
+        <Fragment>
+        <Link to='/' className='cute-link' style={{float:'right', margin: '10px'}}>
           login
         </Link>
-        <Link to='/signup' style={{float:'right', margin: '10px'}}>
+        <Link to='/signup' className='cute-link' style={{float:'right', margin: '10px'}}>
           signup
         </Link>
-        </React.Fragment>
+        </Fragment>
     }
       <div className='menu-bar row'>
 
 
     <Link to='/'>
-      <span className='nav-link column'>
+      <div className='nav-link column'>
+        <br/>
          home
-      </span>
+
+      </div>
       </Link>
+
       <Link to='/explore'>
-      <span className='nav-link column'>
+      <div className='nav-link column'>
+        <br/>
          explore
-      </span>
+
+      </div>
       </Link>
 
     </div>
