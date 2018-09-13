@@ -97,6 +97,7 @@ export function getUser(user) {
 export function saveLocation(location) {
   const { name, lon, lat, userId } = location
 
+  location.name.length === 0 ? location.name = 'home' : null;
   return (dispatch) => {
 
     return fetch(BASE_URL + `/users/${userId}/locations`,

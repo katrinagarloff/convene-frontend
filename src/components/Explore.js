@@ -3,7 +3,6 @@ import MeetUps from './MeetUps';
 import Map from './Map';
 import LocationsDropDown from './LocationsDropDown'
 import AutoComplete from './AutoComplete'
-import { GoogleMapKey } from '../keys.js'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -24,11 +23,14 @@ render() {
   return (
     <div className='row'>
 
+
       <div id='map' className='column meetup-box'>
         <div className='map-frame'>
           <Map isMarkerShown={true}/>
         </div>
       </div>
+
+
 
       <div className='column'>
         <div className='row'>
@@ -39,11 +41,16 @@ render() {
 
           {this.props.user.id ?
           <div className='column'>
+
             <LocationsDropDown />
+
           </div>
           :
-          <div className='column'>
-            <Link to='/'>Login</Link> to save locations and Meetups
+          <div className='column' >
+
+            <Link to='/' className='cute-link' style={{float:'left', margin: '10px'}}>
+                Login
+              </Link> <span style={{float:'left', margin: '10px'}}>...to save locations and Meetups</span>
           </div>
         }
         </div>

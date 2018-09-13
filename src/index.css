@@ -1,10 +1,66 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #D1CDCC;
+  font-family: 'Baloo Tammudu', sans-serif;
+  background-color: #8E819A;
+  /* background-color: #D1CDCC; */
 }
 
+.cute-link {
+  color: #F93441;
+  background-color: #68161C;
+  text-shadow:
+      /* first layer at 1px */
+      -1px -1px 0px #000,
+       0px -1px 0px #000,
+       1px -1px 0px #000,
+      -1px  0px 0px #000,
+       1px  0px 0px #000,
+      -1px  1px 0px #000,
+       0px  1px 0px #000,
+       1px  1px 0px #000,
+      /* second layer at 2px */
+      -2px -2px 0px #000,
+      -1px -2px 0px #000,
+       0px -2px 0px #000,
+       1px -2px 0px #000,
+       2px -2px 0px #000,
+       2px -1px 0px #000,
+       2px  0px 0px #000,
+       2px  1px 0px #000,
+       2px  2px 0px #000,
+       1px  2px 0px #000,
+       0px  2px 0px #000,
+      -1px  2px 0px #000,
+      -2px  2px 0px #000,
+      -2px  1px 0px #000,
+      -2px  0px 0px #000,
+      -2px -1px 0px #000;
+  font-family: 'Baloo Tammudu', sans-serif;
+  font-size: 28px;
+}
+
+.dropdown {
+  z-index: 500;
+  box-shadow: 3px 3px 3px black;
+  position: absolute;
+  font-family: 'Baloo Tammudu', sans-serif;
+  margin: 5px;
+  background-color: #FFCCDC;
+  background-color: #FFDDE8;
+  padding: 5px;
+  /* float: right; */
+  /* width: 90%; */
+}
+
+li:hover {
+    background-color: #FFCCDC;
+    cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
 /* iframe {
   margin-top: -100px;
   width: 300px;
@@ -20,9 +76,9 @@ body {
   }
 }
 
-.meetup-overlay {
+/* .meetup-overlay {
   position: fixed;
-  top: 0;
+  top: -500;
   bottom: 0;
   left: 0;
   right: 0;
@@ -31,6 +87,8 @@ body {
   visibility: hidden;
   opacity: 0;
 
+
+
   border-style: inset;
   border-width: 5px;
   border-right-color: #FB7D86;
@@ -38,18 +96,26 @@ body {
 
   border-left-color: #E3303C;
   border-top-color: #E3303C;
-}
+} */
 
-.meetup-overlay:target {
+.meetup-overlay {
+  background: #9F222A;
   overflow-y: scroll;
   max-height: 200px;
   margin: 10px;
   padding: 10px;
-  /* padding-bottom: 50px; */
-  /* margin-top: -50px; */
   position: relative;
   visibility: visible;
   opacity: 1;
+
+  border-style: inset;
+  border-width: 5px;
+  border-right-color: #FB7D86;
+  border-bottom-color: #FB7D86;
+
+  border-left-color: #E3303C;
+  border-top-color: #E3303C;
+
 }
 
 .overlay {
@@ -69,13 +135,20 @@ body {
 }
 
 .popup {
+  color: #07195E;
   margin: 70px auto;
   padding: 20px;
-  background: #fff;
+  background: #D1CDCC;
   border-radius: 5px;
+  border-style: outset;
+  border-width: 5px;
   width: 30%;
   position: relative;
   transition: all 5s ease-in-out;
+}
+
+.popup a {
+  font-size: 20px;
 }
 
 .popup .close {
@@ -87,15 +160,23 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
 
 
 
 #suggestion-dropdown {
 position: absolute;
+z-index: 500;
 }
 
+#suggestion-dropdown:hover {
+  cursor: pointer;
+}
+
+
 #suggestions {
+  z-index: 500;
   box-shadow: 3px 3px 3px black;
   position: absolute;
   font-family: 'Baloo Tammudu', sans-serif;
@@ -207,39 +288,11 @@ position: absolute;
 
 .green {
   z-index: -100;
-  color: #50B748;
-  font-size: 1.5em;
   font-family: 'Baloo Tammudu', sans-serif;
-  text-shadow:
-      /* first layer at 1px */
-      -1px -1px 0px #000,
-       0px -1px 0px #000,
-       1px -1px 0px #000,
-      -1px  0px 0px #000,
-       1px  0px 0px #000,
-      -1px  1px 0px #000,
-       0px  1px 0px #000,
-       1px  1px 0px #000,
-      /* second layer at 2px */
-      -2px -2px 0px #000,
-      -1px -2px 0px #000,
-       0px -2px 0px #000,
-       1px -2px 0px #000,
-       2px -2px 0px #000,
-       2px -1px 0px #000,
-       2px  0px 0px #000,
-       2px  1px 0px #000,
-       2px  2px 0px #000,
-       1px  2px 0px #000,
-       0px  2px 0px #000,
-      -1px  2px 0px #000,
-      -2px  2px 0px #000,
-      -2px  1px 0px #000,
-      -2px  0px 0px #000,
-      -2px -1px 0px #000;
 }
 
 .meetup-border {
+
   padding: 5px;
   background-color: #F93441;
   /* border-style: solid; */
@@ -254,8 +307,19 @@ position: absolute;
   border-radius: 10px;
   margin: 10px;
   box-shadow: 3px 3px 3px black;
+  cursor: pointer;
 }
 
+.meetup-border:hover {
+color: #E895AF;
+background-color: #E3303C;
+border-style: inset;
+border-right-color: #FB7D86;
+border-bottom-color: #FB7D86;
+
+border-left-color: #E3303C;
+border-top-color: #E3303C;
+}
 .scroll {
     border-style: inset;
     /* border-style: solid; */
@@ -311,14 +375,33 @@ position: absolute;
   float: left;
 }
 
+.styled-select:hover {
+  background-color: #E8BAC8;
+
+  border-style: inset;
+  border-right-color: #FFDEE8;
+  border-bottom-color: #FFDEE8;
+
+  border-left-color: #BA95A1;
+  border-top-color: #BA95A1;
+}
+
 .styled-select {
    /* background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
    height: 29px; */
+   padding: 5px;
+   font-family: 'Baloo Tammudu', sans-serif;
    overflow: hidden;
-   width: 240px;
+   width: 90%;
    background-color: #FFCCDC;
    border-radius: 5px;
    border-style: outset;
+   border-right-color: #BA95A1;
+   border-bottom-color: #BA95A1;
+
+   border-left-color: #FFDEE8;
+   border-top-color: #FFDEE8;
+   cursor: pointer;
 }
 
 .styled-select select {
@@ -360,15 +443,65 @@ position: absolute;
   border-top-color: #1D317F;
 }
 
+
+.nav-link:hover {
+  color: #E895AF;
+  background-color: #E3303C;
+  border-style: inset;
+  border-right-color: #FB7D86;
+  border-bottom-color: #FB7D86;
+
+  border-left-color: #E3303C;
+  border-top-color: #E3303C;
+}
+
 .nav-link {
+padding: 10px;
+background-color: #F93441;
+color: #FFA3C0;
 border-style: outset;
-border-radius: 10px;
-margin: 0px;
+border-radius: 5px;
+margin: auto;
+
+border-right-color: #E3303C;
+border-bottom-color: #E3303C;
+
+border-left-color: #FB7D86;
+border-top-color: #FB7D86;
+/* justify-content: center; */
+font-size: 30px;
+text-shadow:
+-1px -1px 0px #000,
+ 0px -1px 0px #000,
+ 1px -1px 0px #000,
+-1px  0px 0px #000,
+ 1px  0px 0px #000,
+-1px  1px 0px #000,
+ 0px  1px 0px #000,
+ 1px  1px 0px #000,
+/* second layer at 2px */
+-2px -2px 0px #000,
+-1px -2px 0px #000,
+ 0px -2px 0px #000,
+ 1px -2px 0px #000,
+ 2px -2px 0px #000,
+ 2px -1px 0px #000,
+ 2px  0px 0px #000,
+ 2px  1px 0px #000,
+ 2px  2px 0px #000,
+ 1px  2px 0px #000,
+ 0px  2px 0px #000,
+-1px  2px 0px #000,
+-2px  2px 0px #000,
+-2px  1px 0px #000,
+-2px  0px 0px #000,
+-2px -1px 0px #000;
+
 }
 
 .gm-style .gm-style-iw {
   /* border-style: outset; */
-  background-color: black !important;
+  /* background-color: white !important; */
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -376,27 +509,43 @@ margin: 0px;
   width: 100% !important;
   height: 107% !important;
   min-height: 100px !important;
-  padding: 0px;
+  padding: 10px;
+  border-style: outset;
   border-radius: 5px !important;
+  background-color: #FFCCDC !important;
+  border-right-color: #BA95A1;
+  border-bottom-color: #BA95A1;
+  overflow-y: scroll;
+  border-left-color: #FFDEE8;
+  border-top-color: #FFDEE8;
   box-shadow: 3px 3px 3px black;
 }
 
 .menu-bar {
-
-  border-style: outset;
   border-width: 5px;
   width: 25%;
   height: 20%;
   display: block;
   margin-top: 20px;
-  /* margin-bottom: 20px; */
   margin-left: auto;
   margin-right: auto;
-  background-color: white;
   padding: 10px;
-  border-radius: 20px;
+  border-right-color: black;
+  border-bottom-color: black;
+
+  border-left-color: #4759A0;
+  border-top-color: #4759A0;
+  background-color: #1F358B;
+  border-radius: 5px;
+  border-style: outset;
+
 }
 
+.info-div {
+  height: 100%;
+  width: 200px;
+
+}
 
 .gm-style-iw + * {
   box-shadow: 3px 3px 3px black;

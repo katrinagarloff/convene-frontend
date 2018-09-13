@@ -12,6 +12,7 @@ const Home = (props) => {
         :
         <React.Fragment>
         <Login />
+          <br/>
           or...
         <div>
         <Link to={'./signup'}>

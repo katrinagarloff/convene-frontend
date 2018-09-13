@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleMeetups, setActiveKey } from '../redux/actions'
 import { Marker, InfoWindow } from 'react-google-maps'
 import { makeQuery } from '../adapter/index'
+import star from '../images/star-pin.png'
 // import { findDOMNode } from 'react-dom'
 // import $ from 'jquery'
 
@@ -15,19 +16,19 @@ class Markers extends Component {
 
   setMarkers = (meetUps) => {
     return meetUps.map(meetUp => {
-      const { id, name, local_date, local_time, description, link} = meetUp
+      const { id, name} = meetUp
       const { lat, lon } = meetUp.venue
-
-
 
       // <iframe src={`${link}`} frameBorder="0" id={id}
       // ></iframe>
+
       return (
 
         <Marker
           position={{lat: lat, lng: lon}}
           key={id}
           onMouseOver={() => this.props.setActiveKey(id)}
+          icon={star}
         >
           {
             this.props.activeKey === id ?
@@ -36,8 +37,8 @@ class Markers extends Component {
                 <div className="info-div">
                   {
                     meetUp.venue.name ?
-                    <div><p className="green"> {name} </p> {meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
-                    : <div><p className="green"> {name} </p> {meetUp.venue.address_1} </div>
+                    <div><span className="green"> {name} </span> <br/>{meetUp.venue.name} <br/> {meetUp.venue.address_1}</div>
+                    : <div><span className="green"> {name} </span> <br/>{meetUp.venue.address_1} </div>
                    }
                 </div>
               </InfoWindow>
