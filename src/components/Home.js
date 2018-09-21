@@ -10,7 +10,7 @@ const Home = (props) => {
       {props.user.id ?
         <div> Hello {props.user.name} </div>
         :
-        <React.Fragment>
+        <Fragment>
         <Login />
           <br/>
           or...
@@ -21,7 +21,7 @@ const Home = (props) => {
           </div>
         </Link>
         </div>
-        </React.Fragment>
+        </Fragment>
       }
     </div>
   )

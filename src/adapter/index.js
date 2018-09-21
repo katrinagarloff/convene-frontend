@@ -44,10 +44,12 @@ export function createUser(user) {
       return dispatch({
         type: 'SET_USER',
         payload: {
+        user: {
           id: json.id,
           name: json.name,
           username: json.user_name
         }
+      }
       })
     } else {
       return json
@@ -121,14 +123,18 @@ export function saveLocation(location) {
 }
 
 export function getLocations(userId){
+
   return (dispatch) => {
     return fetch(BASE_URL + `/users/${userId}/locations`)
     .then(resp => resp.json())
     .then(json => {
+      console.log(json)
+      if (json.length > 0) {
       return dispatch({
         type: 'GET_LOCATIONS',
         payload: json
       })
+    }
     })
   }
 }

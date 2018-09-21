@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Baloo Tammudu', sans-serif;
-  background-color: #8E819A;
+  background-color: #C3B5C3;
   /* background-color: #D1CDCC; */
 }
 
@@ -376,14 +376,14 @@ border-top-color: #E3303C;
 }
 
 .styled-select:hover {
-  background-color: #E8BAC8;
+  background-color: #E895AF;
 
   border-style: inset;
-  border-right-color: #FFDEE8;
-  border-bottom-color: #FFDEE8;
+  border-right-color: #FFBCD1;
+  border-bottom-color: #FFBCD1;
 
-  border-left-color: #BA95A1;
-  border-top-color: #BA95A1;
+  border-left-color: #D1869E;
+  border-top-color: #D1869E;
 }
 
 .styled-select {
@@ -393,14 +393,14 @@ border-top-color: #E3303C;
    font-family: 'Baloo Tammudu', sans-serif;
    overflow: hidden;
    width: 90%;
-   background-color: #FFCCDC;
+   background-color: #FFABC5;
    border-radius: 5px;
    border-style: outset;
-   border-right-color: #BA95A1;
-   border-bottom-color: #BA95A1;
+   border-right-color: #D1869E;
+   border-bottom-color: #D1869E;
 
-   border-left-color: #FFDEE8;
-   border-top-color: #FFDEE8;
+   border-left-color: #FFBCD1;
+   border-top-color: #FFBCD1;
    cursor: pointer;
 }
 

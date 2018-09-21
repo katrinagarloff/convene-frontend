@@ -34,11 +34,18 @@ export const reducer = (state = defaultState, action) => {
       break;
       case 'SET_USER':
       console.log(action.payload)
+      if(action.payload.locations) {
       return {
         ...state,
         user: { ...action.payload.user },
         locations: [ ...action.payload.locations ]
       }
+    } else {
+      return {
+        ...state,
+        user: { ...action.payload.user }
+      }
+    }
       break;
       case 'GET_LOCATIONS':
       console.log(action.payload)
