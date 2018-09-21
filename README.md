@@ -1,6 +1,6 @@
 
 
-![site demo](https://gfycat.com/FarawayNegativeHydatidtapeworm.gif)
+![site demo](https://thumbs.gfycat.com/ImmenseTalkativeGoat-size_restricted.gif)
 # Convene
 A web app with google map and places autofill to interface with meetup API by location radius.
 
