@@ -29,7 +29,7 @@ npm install
 npm start
 
 
-
+## License 
 MIT License
 
 Copyright (c) 2018 Katrina Garloff
