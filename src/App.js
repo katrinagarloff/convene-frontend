@@ -6,7 +6,7 @@ import Explore from './components/Explore';
 import MenuBar from './components/MenuBar';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
-// import { GoogleMapKey } from './keys'
+
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
 
     return (
       <div className="App">
-      <script type="text/javascript" src={`https://maps.googleapis.com/maps/api/js?key=${GoogleMapKey}&libraries=places`}></script>
+      <script type="text/javascript" src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAD4EppIEYwIO6ErUVpQrWnbcFv2TDbyCM&libraries=places`}></script>
 
         <MenuBar />
         <Switch>
