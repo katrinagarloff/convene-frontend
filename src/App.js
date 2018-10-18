@@ -6,7 +6,7 @@ import Explore from './components/Explore';
 import MenuBar from './components/MenuBar';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
-import { GoogleMapKey } from './keys'
+// import { GoogleMapKey } from './keys'
 
 class App extends Component {
   render() {
