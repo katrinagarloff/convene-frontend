@@ -13,6 +13,7 @@ export function makeQuery(term) {
   )
   .then(resp => resp.json())
   .then(json => {
+    console.log(json.response)
     dispatch({
       type: 'SET_MEETUPS',
       meetUps: json.response.filter(meetup => meetup.venue),

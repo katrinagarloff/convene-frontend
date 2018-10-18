@@ -1,4 +1,5 @@
 
+
 class QueriesController < ApplicationController
   def create
     base_url = "https://api.meetup.com/find/upcoming_events?key=#{THE_KEY}&"
